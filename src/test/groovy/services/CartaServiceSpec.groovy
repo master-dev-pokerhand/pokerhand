@@ -1,45 +1,60 @@
 package services
 
-import groovy.json.JsonSlurper
+import dominio.Carta
+import enuns.Nipe
+import enuns.Valor
 import spock.lang.Specification
 
 class CartaServiceSpec extends Specification {
 
-	def 'Cria cartas corretamente'() {
+	def 'Cria nipe cartas corretamente'() {
 		given:
 		CartaService cartaService = new CartaService()
-		String s = criaJsonParaTeste()
-		def jsonSlurper = new JsonSlurper()
-		Map<String,List<Map>> object = jsonSlurper.parseText(s)
 		when:
-		cartaService.criaCartas()
+		Carta carta = cartaService.criaCarta(cartaExemplo)
 		then:
-		true
+		carta.nipe == nipeCerto
+		where:
+		cartaExemplo || nipeCerto
+		"2s"         || Nipe.ESPADAS
+		"2h"         || Nipe.COPAS
+		"2d"         || Nipe.OUROS
+		"2c"         || Nipe.PAUS
 	}
 
-	String criaJsonParaTeste() {
-		return """{
-	"Mesa": [{
-		"Carta1": "hs",
-		"Carta2": "Tc",
-		"Carta3": "9d",
-		"Carta4": "9c",
-		"Carta5": "7h"
-	}],
-	"Jogadores": [{
-		"Jogador1": [{
-			"Carta1": "hs",
-			"Carta2": "Tc"
-		}],
-		"Jogador2": [{
-			"Carta1": "hs",
-			"Carta2": "Tc"
-		}],
-		"Jogador3": [{
-			"Carta1": "hs",
-			"Carta2": "Tc"
-		}]
-	}]
-}"""
+	def 'Cria valor cartas corretamente'() {
+		given:
+		CartaService cartaService = new CartaService()
+		when:
+		Carta carta = cartaService.criaCarta(cartaExemplo)
+		then:
+		carta.valor == valorCerto
+		where:
+		cartaExemplo || valorCerto
+		"2s"         || Valor.DOIS
+		"3h"         || Valor.TRES
+		"4d"         || Valor.QUATRO
+		"5c"         || Valor.CINCO
+		"6s"         || Valor.SEIS
+		"7s"         || Valor.SETE
+		"8s"         || Valor.OITO
+		"9s"         || Valor.NOVE
+		"Ts"         || Valor.DEZ
+		"Js"         || Valor.VALETE
+		"Qs"         || Valor.DAMA
+		"Ks"         || Valor.REI
+		"As"         || Valor.AS
+
+	}
+
+	def 'Cria varias cartas corretamente'() {
+		given:
+		CartaService cartaService = new CartaService()
+		when:
+		List<Carta> carta = cartaService.criaCartas(cartaExemplo)
+		then:
+		!carta.isEmpty()
+		where:
+		cartaExemplo = "2s 3h"
 	}
 }

@@ -1,10 +1,10 @@
 package enuns
 
 enum Nipe {
-	COPAS('H'),
-	ESPADAS('S'),
-	OUROS('D'),
-	PAUS('C')
+	COPAS('h'),
+	ESPADAS('s'),
+	OUROS('d'),
+	PAUS('c')
 
 	Nipe(String value) {
 		this.Nipe = value
@@ -14,6 +14,17 @@ enum Nipe {
 
 	String getNipe() {
 		Nipe
+	}
+
+	static getEnum(String value){
+		if(value == COPAS.nipe)
+			return COPAS
+		if(value == ESPADAS.nipe)
+			return ESPADAS
+		if(value == OUROS.nipe)
+			return OUROS
+		if(value == PAUS.nipe)
+			return PAUS
 	}
 
 }
