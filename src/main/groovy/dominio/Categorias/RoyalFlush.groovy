@@ -3,6 +3,7 @@ package dominio.Categorias
 import dominio.Carta
 import dominio.Jogador
 import enuns.Categorias
+import enuns.Valor
 
 class RoyalFlush extends StraightFlush {
 
