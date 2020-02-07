@@ -69,11 +69,13 @@ class RodadaService {
 			vencedor = candidatos.first()
 		} else {
 			for (Class categoria in classesCategorias) {
+
 				Categoria categoriaClass =  categoria.newInstance() as Categoria
 				if(categoriaClass.categoria_enum == maiorCategoria){
 					vencedor = categoriaClass.desempate(candidatos)
 				}
 			}
+
 		}
 		return vencedor
 	}

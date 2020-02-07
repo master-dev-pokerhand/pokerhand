@@ -13,6 +13,7 @@ class pokerhand extends Specification{
 		String json = ApiGetter.obtemJson()
 		List<Rodada> rodadas = CriadorObjetos.criaTodasAsRodadas(json)
 		when:
+
 		StringBuffer stringBuffer = new StringBuffer()
 		rodadas.each {
 			Jogador vencedor = rodadaService.encontraVencedorRodada(it)
