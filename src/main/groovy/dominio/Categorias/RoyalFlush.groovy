@@ -14,8 +14,4 @@ class RoyalFlush extends Categoria {
     Jogador desempate(Jogador jogador1, Jogador jogador2) {
         return null
     }
-
-	Map<String, List<Carta>> obtemCartasComMesmoNaipe(List<Carta> cartas) {
-		return ['A': []]
-	}
 }
