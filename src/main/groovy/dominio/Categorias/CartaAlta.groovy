@@ -10,7 +10,7 @@ class CartaAlta extends Categoria {
 
 	@Override
 	Boolean ehCategoria(List<Carta> cartas) {
-		return null
+		return true
 	}
 
 	@Override

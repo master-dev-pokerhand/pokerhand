@@ -12,7 +12,7 @@ class JogadorServiceSpec extends Specification{
 		given:
 		JogadorService jogadorService = new JogadorService()
 		when:
-		Jogador jogador = jogadorService.criaJogador('zé','As 2h')
+		Jogador jogador = jogadorService.criaJogador('zé','As 2h', null)
 		then:
 		jogador
 		jogador.nome == 'zé'
@@ -29,8 +29,8 @@ class JogadorServiceSpec extends Specification{
 		JogadorService jogadorService = new JogadorService()
 		when:
 		List<Jogador> jogador = jogadorService.criaJogadores(['zé':'As 2h',
-															  'mary': 'Kd 9c']
-				as LazyMap)
+															  'mary': 'Kd 9c', ]
+				as LazyMap, null)
 		then:
 		jogador
 

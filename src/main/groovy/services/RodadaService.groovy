@@ -1,5 +1,6 @@
 package services
 
+import dominio.Categorias.CartaAlta
 import dominio.Jogador
 import dominio.Mesa
 import dominio.Rodada
@@ -13,7 +14,7 @@ class RodadaService {
 		Rodada rodada = new Rodada()
 
 		Mesa mesa = mesaService.criaMesa(mesaEJogadores.get('board') as String)
-		List<Jogador> jogadores = jogadorService.criaJogadores(mesaEJogadores.findAll {it.key != 'board'} as LazyMap)
+		List<Jogador> jogadores = jogadorService.criaJogadores(mesaEJogadores.findAll {it.key != 'board'} as LazyMap, mesa)
 
 		rodada.mesa = mesa
 		rodada.jogadores = jogadores
