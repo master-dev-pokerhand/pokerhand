@@ -5,7 +5,7 @@ import services.RodadaService
 
 class CriadorObjetos {
 
-	List<Rodada> cria(String json) {
+	List<Rodada> criaTodasAsRodadas(String json) {
 
 		RodadaService rodadaService = new RodadaService()
 

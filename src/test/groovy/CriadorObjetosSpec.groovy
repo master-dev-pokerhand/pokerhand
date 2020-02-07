@@ -5,7 +5,7 @@ class CriadorObjetosSpec extends Specification{
 	void 'cria objetos'(){
 		when:
 		CriadorObjetos criadorObjetos = new CriadorObjetos()
-		List<Object> list = criadorObjetos.cria(jsonTeste)
+		List<Object> list = criadorObjetos.criaTodasAsRodadas(jsonTeste)
 		then:
 		list
 	}
