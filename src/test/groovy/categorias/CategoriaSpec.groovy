@@ -29,20 +29,36 @@ class CategoriaSpec extends Specification {
 
     def 'obtem cartas agrupadas por valor'(){
         when:
-        List<String, List<Carta>> mapa = categoria.obtemCartasComMesmoValor(getCartasBase())
+        Map<Valor, List<Carta>> mapaCartas = categoria.obtemCartasComMesmoValor(getCartasBase())
 
         then:
-        mapa
+        mapaCartas[Valor.CINCO].size() == 1
+        mapaCartas[Valor.REI].size() == 1
+        mapaCartas[Valor.OITO].size() == 2
+        mapaCartas[Valor.DOIS].size() == 1
+        mapaCartas[Valor.TRES].size() == 1
+        mapaCartas[Valor.QUATRO].size() == 1
+    }
+
+    def 'obtem cartas agrupadas por nipe'(){
+        when:
+        Map<Nipe, List<Carta>> mapaCartas = categoria.obtemCartasComMesmoNipe(getCartasBase())
+
+        then:
+        mapaCartas[Nipe.OUROS].size() == 3
+        mapaCartas[Nipe.ESPADAS].size() == 2
+        mapaCartas[Nipe.PAUS].size() == 1
+        mapaCartas[Nipe.COPAS].size() == 1
     }
 
     List<Carta> getCartasBase() {
         List<Carta> cartas = new ArrayList<>()
         cartas.add(new Carta(Valor.CINCO, Nipe.OUROS))
         cartas.add(new Carta(Valor.REI, Nipe.ESPADAS))
-        cartas.add(new Carta(Valor.OITO, Nipe.PAUS))
+        cartas.add(new Carta(Valor.OITO, Nipe.OUROS))
         cartas.add(new Carta(Valor.DOIS, Nipe.OUROS))
         cartas.add(new Carta(Valor.TRES, Nipe.PAUS))
-        cartas.add(new Carta(Valor.QUATRO, Nipe.OUROS))
+        cartas.add(new Carta(Valor.QUATRO, Nipe.COPAS))
         cartas.add(new Carta(Valor.OITO, Nipe.ESPADAS))
         return cartas
     }
