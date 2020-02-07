@@ -9,20 +9,10 @@ class Sequencia extends Categoria {
 	Boolean ehCategoria(List<Carta> cartas) {
 
 		cartas.sort { Carta carta -> carta.valor.valor }
+		List<Carta> cartasUnicas = cartas.unique(false,{Carta carta -> carta.valor.valor})
+		List<Carta> sequencia = getSequencia(cartasUnicas)
+		return sequencia
 
-		List<Integer> valoresList = cartas*.valor.valor.unique()
-
-		for (int i = 0; i < valoresList.size() - 1; i++) {
-			if (valoresList[i] + 1 != valoresList[i + 1]) {
-				return false
-			}
-		}
-
-		if (valoresList.size() < 5) {
-			return false
-		}
-
-		return true
 	}
 
 	@Override
@@ -30,7 +20,7 @@ class Sequencia extends Categoria {
 		Jogador vencedor = jogadores[0]
 		Carta maiorCartaJogador = obtemMaiorCarta(vencedor.jogada.cartasDaJogada)
 
-		for(int idx =1; idx <  jogadores.size(); idx++){
+		for(int idx = 1; idx <  jogadores.size(); idx++){
 			Jogador jogadorAtual = jogadores[idx]
 			Carta maiorCartaAtual = obtemMaiorCarta(jogadorAtual.jogada.cartasDaJogada)
 
@@ -42,4 +32,21 @@ class Sequencia extends Categoria {
 		return vencedor
 	}
 
+	List<Carta> getSequencia(List<Carta> cartasOrdenadasValorUnico){
+		List<Carta> sequencia = []
+
+		for (int i = 0; i < cartasOrdenadasValorUnico.size(); i++) {
+			Carta proximaCarta = cartasOrdenadasValorUnico[i+1]
+			if (proximaCarta && cartasOrdenadasValorUnico[i].valor.valor + 1 != proximaCarta.valor.valor) {
+				sequencia = []
+			}
+			sequencia.add(cartasOrdenadasValorUnico[i])
+		}
+
+		if(sequencia.size() < 5) {
+			return []
+		}
+
+		return sequencia
+	}
 }
