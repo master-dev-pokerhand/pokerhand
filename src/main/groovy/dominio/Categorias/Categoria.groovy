@@ -11,8 +11,7 @@ abstract class Categoria {
     abstract Jogador desempate(List<Jogador> jogadores)
 
     Carta obtemMaiorCarta(List<Carta> cartas) {
-        Carta cartaMaiorValor = cartas.max { it -> it.valor.valor}
-        return cartaMaiorValor
+        return cartas.max { it -> it.valor.valor}
     }
 
     Map<Valor, List<Carta>> obtemCartasComMesmoValor(List<Carta> cartas) {
