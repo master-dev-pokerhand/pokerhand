@@ -19,7 +19,20 @@ class Trinca extends Categoria {
 
     @Override
     Jogador desempate(List<Jogador> jogadores) {
-        return null
+		Jogador ganhador = jogadores.first()
+		Map<Valor, List<Carta>> mapaTrinca = obtemCartasComMesmoValor(ganhador.jogada.cartasDaJogada)
+		Integer somaTrinca = (Integer) mapaTrinca.values().findAll { List<Carta> cartaList -> cartaList.size() == 3 }.flatten().sum { Carta carta -> carta.valor.valor }
+		Integer somaAtual
+
+		for (int idx = 1; idx <  jogadores.size(); idx++) {
+			mapaTrinca = obtemCartasComMesmoValor(jogadores[idx].jogada.cartasDaJogada)
+			somaAtual = (Integer) mapaTrinca.values().findAll { List<Carta> cartaList -> cartaList.size() == 3 }.flatten().sum { Carta carta -> carta.valor.valor }
+			if (somaAtual > somaTrinca) {
+				ganhador = jogadores[idx]
+			}
+		}
+
+		return ganhador
     }
 
     @Override
