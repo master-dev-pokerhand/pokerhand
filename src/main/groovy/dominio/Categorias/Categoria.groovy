@@ -2,10 +2,12 @@ package dominio.Categorias
 
 import dominio.Carta
 import dominio.Jogador
+import enuns.Categorias
 import enuns.Nipe
 import enuns.Valor
 
 abstract class Categoria {
+    abstract Categorias categoria_enum
     abstract Boolean ehCategoria(List<Carta> cartas)
 
     abstract Jogador desempate(List<Jogador> jogadores)
