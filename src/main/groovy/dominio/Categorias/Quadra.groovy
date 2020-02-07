@@ -17,6 +17,16 @@ class Quadra extends Categoria {
 
     @Override
     Jogador desempate(List<Jogador> jogadores) {
-        return null
+        Jogador campeao = jogadores.first()
+        for (int i = 1; i < jogadores.size(); i++) {
+            Map<Valor, List<Carta>> mapaValoresCampeao = obtemCartasComMesmoValor(campeao.jogada.cartasDaJogada)
+            Map<Valor, List<Carta>> mapaValoresJogador = obtemCartasComMesmoValor(jogadores[i].jogada.cartasDaJogada)
+            List<Carta> quadraCampeao = mapaValoresCampeao.values().findAll { List<Carta> cartalist -> cartalist.size() == 4 }.first()
+            List<Carta> quadraJogador = mapaValoresJogador.values().findAll { List<Carta> cartalist -> cartalist.size() == 4 }.first()
+            if(quadraJogador && quadraJogador.first().valor.valor > quadraCampeao.first().valor.valor){
+                campeao = jogadores[i]
+            }
+        }
+        return campeao
     }
 }
