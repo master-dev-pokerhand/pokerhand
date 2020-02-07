@@ -11,7 +11,8 @@ class RoyalFlush extends Categoria {
     }
 
     @Override
-    Jogador desempate(Jogador jogador1, Jogador jogador2) {
+    Jogador desempate(List<Jogador> jogadores) {
         return null
     }
+
 }

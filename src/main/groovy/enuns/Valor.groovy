@@ -21,7 +21,7 @@ enum Valor {
 	private final int valor
 
 	int getValor() {
-		valor
+		return this.valor
 	}
 
 	static getEnum(String value){

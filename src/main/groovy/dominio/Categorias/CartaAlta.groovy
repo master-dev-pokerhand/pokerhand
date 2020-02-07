@@ -5,26 +5,25 @@ import dominio.Jogador
 
 class CartaAlta extends Categoria {
 
-    @Override
-    Boolean ehCategoria(List<Carta> cartas) {
-        return null
-    }
-
-    @Override
-    Jogador desempate(Jogador jogador1, Jogador jogador2) {
-        return null
-    }
-
-    @Override
-    Carta obtemMaiorCarta(List<Carta> mao) {
-        return null
-    }
-
-	Map<String, List<Carta>> obtemCartasComMesmoValor(List<Carta> cartas) {
-		return ['A': []]
+	@Override
+	Boolean ehCategoria(List<Carta> cartas) {
+		return null
 	}
 
-	Map<String, List<Carta>> obtemCartasComMesmoNaipe(List<Carta> cartas) {
-		return ['A': []]
+	@Override
+	Jogador desempate(List<Jogador> jogadores) {
+		Jogador ganhador = jogadores.first()
+		Carta maiorCarta = obtemMaiorCarta(ganhador.mao)
+		Carta cartaAtual
+
+		for (Jogador jogador in jogadores) {
+			cartaAtual = obtemMaiorCarta(jogador.mao)
+			if (cartaAtual.valor > maiorCarta.valor) {
+				maiorCarta = cartaAtual
+				ganhador = jogador
+			}
+		}
+
+		return ganhador
 	}
 }
