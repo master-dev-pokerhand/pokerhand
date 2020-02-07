@@ -1,7 +1,6 @@
 package services
-
+import groovy.json.internal.LazyMap
 import dominio.Jogador
-import dtos.JogadorDTO
 
 class JogadorService {
 
@@ -14,11 +13,10 @@ class JogadorService {
 		return jogador
 	}
 
-	List<Jogador> criaJogadores(List<Map<String,String>> jogadores) {
+	List<Jogador> criaJogadores(LazyMap jogadores) {
 		List<Jogador> jogadoresCriados = []
-		for (Map<String,String> jogador in jogadores) {
-			JogadorDTO dto = new JogadorDTO(jogador)
-			jogadoresCriados.add(criaJogador(dto.nome, dto.cartas))
+		jogadores.each { String nomeJogador, String cartas ->
+			jogadoresCriados.add(criaJogador(nomeJogador, cartas))
 		}
 		return jogadoresCriados
 	}

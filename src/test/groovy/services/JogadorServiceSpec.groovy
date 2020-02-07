@@ -1,10 +1,10 @@
 package services
 
 import dominio.Jogador
-import dtos.JogadorDTO
 import enuns.Nipe
 import enuns.Valor
 import spock.lang.Specification
+import groovy.json.internal.LazyMap
 
 class JogadorServiceSpec extends Specification{
 
@@ -24,24 +24,18 @@ class JogadorServiceSpec extends Specification{
 		jogador.mao.get(1).valor == Valor.DOIS
 	}
 
-	void 'cria jogadoresDTO corretamente'(){
-		when:
-		JogadorDTO jogadorDTO = new JogadorDTO(['zé':'As 2h'])
-		then:
-		jogadorDTO.nome == 'zé'
-		jogadorDTO.cartas == 'As 2h'
-	}
-
 	void 'cria jogadores corretamente'(){
 		given:
 		JogadorService jogadorService = new JogadorService()
 		when:
-		List<Jogador> jogador = jogadorService.criaJogadores([['zé':'As 2h'], ['mary': 'Kd 9c']])
+		List<Jogador> jogador = jogadorService.criaJogadores(['zé':'As 2h',
+															  'mary': 'Kd 9c']
+				as LazyMap)
 		then:
 		jogador
 
 		and:
-		Jogador amostra1 = jogador.get(0)
+		Jogador amostra1 = jogador.find {it.nome == 'zé'}
 		amostra1.nome == 'zé'
 
 		amostra1.mao.get(0).nipe == Nipe.ESPADAS
@@ -51,7 +45,7 @@ class JogadorServiceSpec extends Specification{
 		amostra1.mao.get(1).valor == Valor.DOIS
 
 		and:
-		Jogador amostra2 = jogador.get(1)
+		Jogador amostra2 = jogador.find {it.nome == 'mary'}
 		amostra2.nome == 'mary'
 
 		amostra2.mao.get(0).nipe == Nipe.OUROS

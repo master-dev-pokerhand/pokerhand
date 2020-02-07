@@ -23,7 +23,7 @@ class CategoriaSpec extends Specification {
         where:
         cartas                                               | cartaResposta
         getCartasBase()                                      | new Carta(Valor.REI, Nipe.ESPADAS)
-        getCartasBase() + [new Carta(Valor.REI, Nipe.OUROS)] | null
+        getCartasBase() + [new Carta(Valor.REI, Nipe.OUROS)] | new Carta(Valor.REI, Nipe.ESPADAS)
 
     }
 
