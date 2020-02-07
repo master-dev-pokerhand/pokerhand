@@ -1,4 +1,5 @@
 import groovy.json.JsonSlurper
+import org.junit.Ignore
 import spock.lang.Specification
 
 class T extends Specification {
@@ -38,6 +39,7 @@ class T extends Specification {
 		true
 	}
 
+	@Ignore
 	void 'obte json corretamente'(){
 		when:
 		String c = ApiGetter.obtemJson()
