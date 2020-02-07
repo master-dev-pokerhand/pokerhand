@@ -8,7 +8,7 @@ import enuns.Valor
 abstract class Categoria {
     abstract Boolean ehCategoria(List<Carta> cartas)
 
-    abstract Jogador desempate(Jogador jogador1, Jogador jogador2)
+    abstract Jogador desempate(List<Jogador> jogadores)
 
     Carta obtemMaiorCarta(List<Carta> cartas) {
         Carta cartaMaiorValor = cartas.max { it -> it.valor.valor}

@@ -13,7 +13,7 @@ enum Nipe {
 	private final String Nipe
 
 	String getNipe() {
-		Nipe
+		return this.Nipe
 	}
 
 	static getEnum(String value){
