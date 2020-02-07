@@ -1,5 +1,9 @@
 package dominio
 
 class Mesa {
-	List<Carta> mesa
+	List<Carta> listaDeCartas
+
+	Mesa(List<Carta> cartas){
+		this.listaDeCartas = cartas
+	}
 }
