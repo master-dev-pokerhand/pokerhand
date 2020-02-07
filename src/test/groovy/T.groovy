@@ -39,12 +39,12 @@ class T extends Specification {
 		true
 	}
 
-	@Ignore
-	void 'obte json corretamente'(){
-		when:
-		String c = ApiGetter.obtemJson()
-		then:
-		c
-	}
+//	@Ignore
+//	void 'obte json corretamente'(){
+//		when:
+//		String c = ApiGetter.obtemJson()
+//		then:
+//		c
+//	}
 
 }
