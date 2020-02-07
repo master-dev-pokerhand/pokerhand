@@ -24,7 +24,32 @@ enum Valor {
 		valor
 	}
 
-	public String toString() {
-		return name() + " = " + valor
+	static getEnum(String value){
+		if(value == 'T')
+			return DEZ
+		if(value == 'J')
+			return VALETE
+		if(value == 'Q')
+			return DAMA
+		if(value == 'K')
+			return REI
+		if(value == 'A')
+			return AS
+		if(value.toInteger() == DOIS.valor)
+			return DOIS
+		if(value.toInteger()  == TRES.valor)
+			return TRES
+		if(value.toInteger()  == QUATRO.valor)
+			return QUATRO
+		if(value.toInteger()  == CINCO.valor)
+			return CINCO
+		if(value.toInteger()  == SEIS.valor)
+			return SEIS
+		if(value.toInteger()  == SETE.valor)
+			return SETE
+		if(value.toInteger()  == OITO.valor)
+			return OITO
+		if(value.toInteger()  == NOVE.valor)
+			return NOVE
 	}
 }
