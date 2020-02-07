@@ -17,7 +17,18 @@ class UmPar extends Categoria {
     @Override
     Jogador desempate(List<Jogador> jogadores) {
 		Jogador ganhador = jogadores.first()
-		Carta maiorPar = obtemMaiorCarta(ganhador.mao)
+		Integer somaPar = ganhador*.mao.flatten().sum { Carta carta -> carta.valor.valor } as Integer
+		Integer somaAtual
+
+		for (Jogador jogador in jogadores) {
+			somaAtual = jogador*.mao.flatten().sum { Carta carta -> carta.valor.valor } as Integer
+			if (somaAtual > somaPar) {
+				somaPar = somaAtual
+				ganhador = jogador
+			}
+		}
+
+		return ganhador
     }
 
     @Override
