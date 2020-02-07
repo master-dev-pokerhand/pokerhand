@@ -11,7 +11,7 @@ import spock.lang.Specification
 
 class UmParSpec extends Specification {
 
-	def 'identifição de mão contendo Um Par'() {
+	def 'identificação de mão contendo Um Par'() {
 		setup:
 		Jogada jogada1 = new Jogada()
 

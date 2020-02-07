@@ -19,7 +19,19 @@ class DoisPares extends Categoria {
 
     @Override
     Jogador desempate(List<Jogador> jogadores) {
-        return null
+		Jogador ganhador = jogadores.first()
+		Integer somaPares = ganhador*.jogada.cartasDaJogada.flatten().sum { Carta carta -> carta.valor.valor } as Integer
+		Integer somaAtual
+
+		for (int idx = 1; idx <  jogadores.size(); idx++) {
+			somaAtual = jogadores[idx]*.jogada.cartasDaJogada.flatten().sum { Carta carta -> carta.valor.valor } as Integer
+			if (somaAtual > somaPares) {
+				somaPares = somaAtual
+				ganhador = jogadores[idx]
+			}
+		}
+
+		return ganhador
     }
 
 }

@@ -23,11 +23,11 @@ class UmPar extends Categoria {
 		Integer somaPar = ganhador*.mao.flatten().sum { Carta carta -> carta.valor.valor } as Integer
 		Integer somaAtual
 
-		for (Jogador jogador in jogadores) {
-			somaAtual = jogador*.mao.flatten().sum { Carta carta -> carta.valor.valor } as Integer
+		for (int idx = 1; idx <  jogadores.size(); idx++) {
+			somaAtual = jogadores[idx]*.mao.flatten().sum { Carta carta -> carta.valor.valor } as Integer
 			if (somaAtual > somaPar) {
 				somaPar = somaAtual
-				ganhador = jogador
+				ganhador = jogadores[idx]
 			}
 		}
 
