@@ -9,10 +9,20 @@ abstract class Categoria {
     abstract Jogador desempate(Jogador jogador1, Jogador jogador2)
 
     Carta obtemMaiorCarta(List<Carta> cartas) {
-        return cartas.max { it -> it.valor.valor }
+        List<Carta> cartasOrdenadas = cartas.sort() { it -> it.valor.valor }
+
+        Carta maiorCarta = cartasOrdenadas.pop()
+        if(maiorCarta.valor.valor == cartasOrdenadas.last().valor.valor)
+            return null
+        else
+            return maiorCarta
     }
 
-	abstract Map<String, List<Carta>> obtemCartasComMesmoValor(List<Carta> cartas)
+	Map<String, List<Carta>> obtemCartasComMesmoValor(List<Carta> cartas) {
+        return cartas.groupBy {it -> it.valor}
+    }
 
-	abstract Map<String, List<Carta>> obtemCartasComMesmoNaipe(List<Carta> cartas)
+	Map<String, List<Carta>> obtemCartasComMesmoNaipe(List<Carta> cartas) {
+        return cartas.groupBy {it -> it.nipe}
+    }
 }
