@@ -48,7 +48,7 @@ class UmParSpec extends Specification {
 	List<Carta> getCartas_p1() {
 		List<Carta> cartas = new ArrayList<>()
 		cartas.add(new Carta(Valor.REI, Nipe.OUROS))
-		cartas.add(new Carta(Valor.TRES, Nipe.ESPADAS))
+		cartas.add(new Carta(Valor.REI, Nipe.ESPADAS))
 		return cartas
 	}
 
