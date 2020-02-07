@@ -3,7 +3,6 @@ package categorias
 import dominio.Carta
 import dominio.Categorias.CartaAlta
 import dominio.Categorias.Categoria
-import dominio.Jogada
 import dominio.Jogador
 import enuns.Nipe
 import enuns.Valor

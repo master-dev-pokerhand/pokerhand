@@ -16,11 +16,11 @@ class CartaAlta extends Categoria {
 		Carta maiorCarta = obtemMaiorCarta(ganhador.mao)
 		Carta cartaAtual
 
-		for (Jogador jogador in jogadores) {
-			cartaAtual = obtemMaiorCarta(jogador.mao)
+		for (int idx = 1; idx <  jogadores.size(); idx++) {
+			cartaAtual = obtemMaiorCarta(jogadores[idx].mao)
 			if (cartaAtual.valor > maiorCarta.valor) {
 				maiorCarta = cartaAtual
-				ganhador = jogador
+				ganhador = jogadores[idx]
 			}
 		}
 
