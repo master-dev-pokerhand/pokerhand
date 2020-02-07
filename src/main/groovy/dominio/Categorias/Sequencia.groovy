@@ -21,6 +21,7 @@ class Sequencia extends Categoria {
 		if (valoresList.size() < 5) {
 			return false
 		}
+
 		return true
 	}
 

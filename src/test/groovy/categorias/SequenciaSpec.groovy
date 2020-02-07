@@ -3,7 +3,7 @@ package categorias
 import dominio.Carta
 import dominio.Categorias.Categoria
 import dominio.Categorias.Sequencia
-import dominio.Jogador
+import dominio.Jogada
 import enuns.Nipe
 import enuns.Valor
 import spock.lang.Specification
@@ -12,30 +12,30 @@ class SequenciaSpec extends Specification {
 
 	def 'identifição de mão não contendo uma sequência'() {
 		setup:
-		Jogador jogador1 = new Jogador()
+		Jogada jogada1 = new Jogada()
 
-		jogador1.mao = getCartas_p1_falha()
+		jogada1.cartasDaJogada = getCartas_p1_falha()
 
 		Categoria categoria = new Sequencia()
 
 		when:
-		Boolean possuiSequencia = categoria.ehCategoria(jogador1.mao)
+		Boolean possuiSequencia = categoria.ehCategoria(jogada1.cartasDaJogada)
 
 		then:
-		possuiSequencia
+		!possuiSequencia
 
 	}
 
 	def 'identifição de mão  contendo uma sequência'() {
 		setup:
-		Jogador jogador1 = new Jogador()
+		Jogada jogada1 = new Jogada()
 
-		jogador1.mao = getCartas_p1_sucesso()
+		jogada1.cartasDaJogada = getCartas_p1_sucesso()
 
 		Categoria categoria = new Sequencia()
 
 		when:
-		Boolean possuiSequencia = categoria.ehCategoria(jogador1.mao)
+		Boolean possuiSequencia = categoria.ehCategoria(jogada1.cartasDaJogada)
 
 		then:
 		possuiSequencia
