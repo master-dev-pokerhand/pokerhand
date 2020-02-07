@@ -16,8 +16,6 @@ import dominio.Jogada
 import dominio.Jogador
 import dominio.Mesa
 import enuns.Categorias
-import enuns.Nipe
-import enuns.Valor
 
 class JogadaService {
 
@@ -34,16 +32,16 @@ class JogadaService {
 			CartaAlta
 	]
 
-	Jogada obtemJogadaJogador(Jogador jogador, Mesa mesa){
-		if(!mesa || !jogador){
+	Jogada obtemJogadaJogador(Jogador jogador, Mesa mesa) {
+		if (!mesa || !jogador) {
 			return null
 		}
 		List<Carta> todaAsCartas = jogador.mao + mesa.listaDeCartas
 
 		for (Class categoria in classesCategorias) {
-			Categoria categoriaClass =  categoria.newInstance() as Categoria
+			Categoria categoriaClass = categoria.newInstance() as Categoria
 			Boolean ehCategoria = categoriaClass.ehCategoria(todaAsCartas)
-			if(ehCategoria){
+			if (ehCategoria) {
 				Jogada jogada = new Jogada()
 				jogada.cartasDaJogada = todaAsCartas
 				jogada.categoria = (Categorias) categoriaClass.categoria_enum

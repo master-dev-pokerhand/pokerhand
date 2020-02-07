@@ -4,7 +4,7 @@ import dominio.Carta
 import dominio.Mesa
 
 class MesaService {
-	Mesa criaMesa(String mesa){
+	Mesa criaMesa(String mesa) {
 		CartaService cartaService = new CartaService()
 
 		List<Carta> cartasDaMesa = cartaService.criaCartas(mesa)

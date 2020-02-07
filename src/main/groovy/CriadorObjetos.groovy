@@ -6,7 +6,7 @@ import services.RodadaService
 class CriadorObjetos {
 
 	static List<Rodada> criaTodasAsRodadas(String json) {
-		if(!json){
+		if (!json) {
 			return []
 		}
 

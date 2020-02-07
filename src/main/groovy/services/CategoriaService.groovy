@@ -5,7 +5,7 @@ import dominio.Mesa
 
 class CategoriaService {
 
-	void obtemJogada(Jogador jogador, Mesa mesa){
+	void obtemJogada(Jogador jogador, Mesa mesa) {
 		jogador.jogada = null
 	}
 }
