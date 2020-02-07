@@ -8,22 +8,34 @@ import enuns.Valor
 import spock.lang.Specification
 
 class CategoriaSpec extends Specification {
-    def 'obtem maior carta corretamente'() {
-        setup:
-        List<Carta> cartas = getCartas()
-        Categoria categoria = new RoyalFlush();
+    Categoria categoria = new RoyalFlush();
 
+    def 'obtem maior carta corretamente'() {
         when:
         Carta maiorCarta = categoria.obtemMaiorCarta(cartas)
 
         then:
-        maiorCarta.valor == Valor.REI
+        maiorCarta?.valor == cartaResposta?.valor
 
         and:
-        maiorCarta.nipe == Nipe.ESPADAS
+        maiorCarta?.nipe == cartaResposta?.nipe
+
+        where:
+        cartas                                               | cartaResposta
+        getCartasBase()                                      | new Carta(Valor.REI, Nipe.ESPADAS)
+        getCartasBase() + [new Carta(Valor.REI, Nipe.OUROS)] | null
+
     }
 
-    List<Carta> getCartas(){
+    def 'obtem cartas agrupadas por valor'(){
+        when:
+        List<String, List<Carta>> mapa = categoria.obtemCartasComMesmoValor(getCartasBase())
+
+        then:
+        mapa
+    }
+
+    List<Carta> getCartasBase() {
         List<Carta> cartas = new ArrayList<>()
         cartas.add(new Carta(Valor.CINCO, Nipe.OUROS))
         cartas.add(new Carta(Valor.REI, Nipe.ESPADAS))

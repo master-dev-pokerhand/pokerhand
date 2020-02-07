@@ -15,10 +15,6 @@ class RoyalFlush extends Categoria {
         return null
     }
 
-	Map<String, List<Carta>> obtemCartasComMesmoValor(List<Carta> cartas) {
-		return ['A': []]
-	}
-
 	Map<String, List<Carta>> obtemCartasComMesmoNaipe(List<Carta> cartas) {
 		return ['A': []]
 	}
