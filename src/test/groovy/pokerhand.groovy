@@ -1,8 +1,10 @@
 import dominio.Jogador
 import dominio.Rodada
 import services.RodadaService
+import spock.lang.Ignore
 import spock.lang.Specification
 
+@Ignore
 class pokerhand extends Specification{
 
 	void 'teste generico'(){
