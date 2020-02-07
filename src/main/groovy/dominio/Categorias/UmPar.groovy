@@ -16,7 +16,8 @@ class UmPar extends Categoria {
 
     @Override
     Jogador desempate(List<Jogador> jogadores) {
-        return null
+		Jogador ganhador = jogadores.first()
+		Carta maiorPar = obtemMaiorCarta(ganhador.mao)
     }
 
     @Override

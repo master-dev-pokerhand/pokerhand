@@ -21,17 +21,25 @@ class Sequencia extends Categoria {
 		if (valoresList.size() < 5) {
 			return false
 		}
+
 		return true
 	}
 
 	@Override
 	Jogador desempate(List<Jogador> jogadores) {
-		return null
-	}
+		Jogador vencedor = jogadores[0]
+		Carta maiorCartaJogador = obtemMaiorCarta(vencedor.jogada.cartasDaJogada)
 
-	@Override
-	Carta obtemMaiorCarta(List<Carta> mao) {
-		return null
+		for(int idx =1; idx <  jogadores.size(); idx++){
+			Jogador jogadorAtual = jogadores[idx]
+			Carta maiorCartaAtual = obtemMaiorCarta(jogadorAtual.jogada.cartasDaJogada)
+
+			if(maiorCartaAtual.valor > maiorCartaJogador.valor){
+				vencedor = jogadorAtual
+			}
+		}
+
+		return vencedor
 	}
 
 }

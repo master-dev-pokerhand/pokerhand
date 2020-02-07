@@ -11,9 +11,7 @@ abstract class Categoria {
     abstract Jogador desempate(List<Jogador> jogadores)
 
     Carta obtemMaiorCarta(List<Carta> cartas) {
-        Carta cartaMaiorValor = cartas.max { it -> it.valor.valor}
-        List<Carta> repeticao = cartas.findAll { it -> it.valor.valor == cartaMaiorValor.valor.valor }
-        return repeticao.size() == 1 ? cartaMaiorValor : null
+        return cartas.max { it -> it.valor.valor}
     }
 
     Map<Valor, List<Carta>> obtemCartasComMesmoValor(List<Carta> cartas) {

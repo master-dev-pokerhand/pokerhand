@@ -3,7 +3,7 @@ package categorias
 import dominio.Carta
 import dominio.Categorias.Categoria
 import dominio.Categorias.Trinca
-import dominio.Jogador
+import dominio.Jogada
 import enuns.Nipe
 import enuns.Valor
 import spock.lang.Specification
@@ -12,14 +12,14 @@ class TrincaSpec extends Specification {
 
 	def 'identifição de mão contendo uma Trinca'() {
 		setup:
-		Jogador jogador1 = new Jogador()
+		Jogada jogada1 = new Jogada()
 
-		jogador1.mao = getCartas_p1()
+		jogada1.cartasDaJogada = getCartas_p1()
 
 		Categoria categoria = new Trinca()
 
 		when:
-		Boolean possuiTrinca = categoria.ehCategoria(jogador1.mao)
+		Boolean possuiTrinca = categoria.ehCategoria(jogada1.cartasDaJogada)
 
 		then:
 		possuiTrinca
