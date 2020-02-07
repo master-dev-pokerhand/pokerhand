@@ -16,6 +16,8 @@ import dominio.Jogada
 import dominio.Jogador
 import dominio.Mesa
 import enuns.Categorias
+import enuns.Nipe
+import enuns.Valor
 
 class JogadaService {
 
@@ -31,10 +33,6 @@ class JogadaService {
 			UmPar,
 			CartaAlta
 	]
-
-	Jogador obtemVencedor(List<Jogador> jogadores){
-		return null
-	}
 
 	Jogada obtemJogadaJogador(Jogador jogador, Mesa mesa){
 		if(!mesa || !jogador){
