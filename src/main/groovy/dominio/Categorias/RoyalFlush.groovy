@@ -15,11 +15,6 @@ class RoyalFlush extends Categoria {
         return null
     }
 
-    @Override
-    Carta obtemMaiorCarta(List<Carta> mao) {
-        return null
-    }
-
 	Map<String, List<Carta>> obtemCartasComMesmoValor(List<Carta> cartas) {
 		return ['A': []]
 	}

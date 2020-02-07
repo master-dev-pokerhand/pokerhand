@@ -4,11 +4,13 @@ import dominio.Carta
 import dominio.Jogador
 
 abstract class Categoria {
-	abstract Boolean ehCategoria(List<Carta> cartas)
+    abstract Boolean ehCategoria(List<Carta> cartas)
 
-	abstract Jogador desempate(Jogador jogador1, Jogador jogador2)
+    abstract Jogador desempate(Jogador jogador1, Jogador jogador2)
 
-	abstract Carta obtemMaiorCarta(List<Carta> mao)
+    Carta obtemMaiorCarta(List<Carta> cartas) {
+        return cartas.max { it -> it.valor.valor }
+    }
 
 	abstract Map<String, List<Carta>> obtemCartasComMesmoValor(List<Carta> cartas)
 
