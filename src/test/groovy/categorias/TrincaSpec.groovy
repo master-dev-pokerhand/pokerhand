@@ -11,7 +11,7 @@ import spock.lang.Specification
 
 class TrincaSpec extends Specification {
 
-	def 'identifição de mão contendo uma Trinca'() {
+	def 'identificação de mão contendo uma Trinca'() {
 		setup:
 		Jogada jogada1 = new Jogada()
 

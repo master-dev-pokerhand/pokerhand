@@ -11,7 +11,7 @@ import spock.lang.Specification
 
 class SequenciaSpec extends Specification {
 
-	def 'identifição de mão não contendo uma sequência'() {
+	def 'identificação de mão não contendo uma sequência'() {
 		setup:
 		Jogador jogador1 = new Jogador()
 		Jogada jogada1 = new Jogada()
@@ -30,7 +30,7 @@ class SequenciaSpec extends Specification {
 
 	}
 
-	def 'identifição de mão  contendo uma sequência'() {
+	def 'identificação de mão  contendo uma sequência'() {
 		setup:
 		Jogador jogador1 = new Jogador()
 		Jogada jogada1 = new Jogada()
