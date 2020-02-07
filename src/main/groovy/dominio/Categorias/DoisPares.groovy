@@ -3,7 +3,7 @@ package dominio.Categorias
 import dominio.Carta
 import dominio.Jogador
 
-class RoyalFlush extends Categoria {
+class DoisPares extends Categoria {
 
     @Override
     Boolean ehCategoria(List<Carta> cartas) {
