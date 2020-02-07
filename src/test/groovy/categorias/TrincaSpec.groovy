@@ -22,7 +22,7 @@ class TrincaSpec extends Specification {
 		Boolean possuiTrinca = categoria.ehCategoria(jogador1.mao)
 
 		then:
-		assert possuiTrinca
+		possuiTrinca
 
 	}
 

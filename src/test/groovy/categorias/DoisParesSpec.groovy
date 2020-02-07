@@ -22,7 +22,7 @@ class DoisParesSpec extends Specification {
 		Boolean possuiDoisPares = categoria.ehCategoria(jogador1.mao)
 
 		then:
-		assert possuiDoisPares
+		possuiDoisPares
 
 	}
 

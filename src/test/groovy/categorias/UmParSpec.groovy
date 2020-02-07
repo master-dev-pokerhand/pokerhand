@@ -22,7 +22,7 @@ class UmParSpec extends Specification {
 		Boolean possuiUmPar = categoria.ehCategoria(jogador1.mao)
 
 		then:
-		assert possuiUmPar
+		possuiUmPar
 
 	}
 

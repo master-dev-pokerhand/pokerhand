@@ -10,11 +10,11 @@ import spock.lang.Specification
 
 class SequenciaSpec extends Specification {
 
-	def 'identifição de mão contendo uma sequência'() {
+	def 'identifição de mão não contendo uma sequência'() {
 		setup:
 		Jogador jogador1 = new Jogador()
 
-		jogador1.mao = getCartas_p1()
+		jogador1.mao = getCartas_p1_falha()
 
 		Categoria categoria = new Sequencia()
 
@@ -22,19 +22,47 @@ class SequenciaSpec extends Specification {
 		Boolean possuiSequencia = categoria.ehCategoria(jogador1.mao)
 
 		then:
-		assert possuiSequencia
+		possuiSequencia
 
 	}
 
-	List<Carta> getCartas_p1() {
+	def 'identifição de mão  contendo uma sequência'() {
+		setup:
+		Jogador jogador1 = new Jogador()
+
+		jogador1.mao = getCartas_p1_sucesso()
+
+		Categoria categoria = new Sequencia()
+
+		when:
+		Boolean possuiSequencia = categoria.ehCategoria(jogador1.mao)
+
+		then:
+		possuiSequencia
+
+	}
+
+	List<Carta> getCartas_p1_falha() {
 		List<Carta> cartas = new ArrayList<>()
 		cartas.add(new Carta(Valor.DOIS, Nipe.OUROS))
-		cartas.add(new Carta(Valor.TRES, Nipe.ESPADAS))
+		cartas.add(new Carta(Valor.DOIS, Nipe.ESPADAS))
+		cartas.add(new Carta(Valor.TRES, Nipe.PAUS))
+		cartas.add(new Carta(Valor.TRES, Nipe.OUROS))
+		cartas.add(new Carta(Valor.QUATRO, Nipe.PAUS))
 		cartas.add(new Carta(Valor.QUATRO, Nipe.PAUS))
 		cartas.add(new Carta(Valor.CINCO, Nipe.OUROS))
-		cartas.add(new Carta(Valor.SEIS, Nipe.PAUS))
-		cartas.add(new Carta(Valor.DOIS, Nipe.PAUS))
+		return cartas
+	}
+
+	List<Carta> getCartas_p1_sucesso() {
+		List<Carta> cartas = new ArrayList<>()
+		cartas.add(new Carta(Valor.DOIS, Nipe.OUROS))
+		cartas.add(new Carta(Valor.DOIS, Nipe.ESPADAS))
+		cartas.add(new Carta(Valor.TRES, Nipe.PAUS))
 		cartas.add(new Carta(Valor.QUATRO, Nipe.OUROS))
+		cartas.add(new Carta(Valor.CINCO, Nipe.PAUS))
+		cartas.add(new Carta(Valor.SEIS, Nipe.PAUS))
+		cartas.add(new Carta(Valor.CINCO, Nipe.OUROS))
 		return cartas
 	}
 }
