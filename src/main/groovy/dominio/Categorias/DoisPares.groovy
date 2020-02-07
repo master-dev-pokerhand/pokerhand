@@ -17,21 +17,22 @@ class DoisPares extends Categoria {
 		return quantidadeDePares == 2
     }
 
-    @Override
-    Jogador desempate(List<Jogador> jogadores) {
+	@Override
+	Jogador desempate(List<Jogador> jogadores) {
 		Jogador ganhador = jogadores.first()
-		Integer somaPares = ganhador*.jogada.cartasDaJogada.flatten().sum { Carta carta -> carta.valor.valor } as Integer
+		Map<Valor, List<Carta>> mapaPares = obtemCartasComMesmoValor(ganhador.jogada.cartasDaJogada)
+		Integer somaPares = (Integer) mapaPares.values().findAll { List<Carta> cartaList -> cartaList.size() == 2 }.flatten().sum { Carta carta -> carta.valor.valor }
 		Integer somaAtual
 
 		for (int idx = 1; idx <  jogadores.size(); idx++) {
-			somaAtual = jogadores[idx]*.jogada.cartasDaJogada.flatten().sum { Carta carta -> carta.valor.valor } as Integer
+			mapaPares = obtemCartasComMesmoValor(jogadores[idx].jogada.cartasDaJogada)
+			somaAtual = (Integer) mapaPares.values().findAll { List<Carta> cartaList -> cartaList.size() == 2 }.flatten().sum { Carta carta -> carta.valor.valor }
 			if (somaAtual > somaPares) {
-				somaPares = somaAtual
 				ganhador = jogadores[idx]
 			}
 		}
 
 		return ganhador
-    }
+	}
 
 }

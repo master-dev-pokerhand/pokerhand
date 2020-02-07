@@ -47,15 +47,15 @@ class DoisParesSpec extends Specification {
 		Jogador jogador = categoria.desempate([jogador1,jogador2])
 
 		then:
-		jogador == jogador2
+		jogador == jogador1
 	}
 
 	List<Carta> getCartas_p1() {
 		List<Carta> cartas = new ArrayList<>()
 		cartas.add(new Carta(Valor.TRES, Nipe.OUROS))
 		cartas.add(new Carta(Valor.TRES, Nipe.ESPADAS))
-		cartas.add(new Carta(Valor.DEZ, Nipe.PAUS))
-		cartas.add(new Carta(Valor.DEZ, Nipe.OUROS))
+		cartas.add(new Carta(Valor.AS, Nipe.PAUS))
+		cartas.add(new Carta(Valor.AS, Nipe.OUROS))
 		cartas.add(new Carta(Valor.DAMA, Nipe.PAUS))
 		cartas.add(new Carta(Valor.DOIS, Nipe.PAUS))
 		cartas.add(new Carta(Valor.QUATRO, Nipe.PAUS))
@@ -65,12 +65,12 @@ class DoisParesSpec extends Specification {
 	List<Carta> getCartas_p2() {
 		List<Carta> cartas = new ArrayList<>()
 		cartas.add(new Carta(Valor.REI, Nipe.OUROS))
-		cartas.add(new Carta(Valor.TRES, Nipe.ESPADAS))
-		cartas.add(new Carta(Valor.DEZ, Nipe.PAUS))
-		cartas.add(new Carta(Valor.DEZ, Nipe.OUROS))
+		cartas.add(new Carta(Valor.QUATRO, Nipe.ESPADAS))
+		cartas.add(new Carta(Valor.TRES, Nipe.PAUS))
+		cartas.add(new Carta(Valor.SETE, Nipe.OUROS))
 		cartas.add(new Carta(Valor.REI, Nipe.PAUS))
-		cartas.add(new Carta(Valor.DOIS, Nipe.PAUS))
-		cartas.add(new Carta(Valor.QUATRO, Nipe.PAUS))
+		cartas.add(new Carta(Valor.TRES, Nipe.PAUS))
+		cartas.add(new Carta(Valor.CINCO, Nipe.PAUS))
 		return cartas
 	}
 }
