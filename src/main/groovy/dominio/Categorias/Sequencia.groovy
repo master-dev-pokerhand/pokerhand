@@ -19,6 +19,7 @@ class Sequencia extends Categoria {
 	Jogador desempate(List<Jogador> jogadores) {
 		Jogador vencedor = jogadores[0]
 		Carta maiorCartaJogador = obtemMaiorCarta(vencedor.jogada.cartasDaJogada)
+		Carta maiorCartaTodas = maiorCartaJogador
 
 		for(int idx = 1; idx <  jogadores.size(); idx++){
 			Jogador jogadorAtual = jogadores[idx]
@@ -26,10 +27,19 @@ class Sequencia extends Categoria {
 
 			if(maiorCartaAtual.valor > maiorCartaJogador.valor){
 				vencedor = jogadorAtual
+				maiorCartaTodas = maiorCartaAtual
 			}
 		}
 
-		return vencedor
+		List<Jogador> jogadoresSemOVencedor = jogadores - vencedor
+
+		Boolean existeEmpate = jogadoresSemOVencedor.any{Jogador jogador ->
+			return jogador.jogada.cartasDaJogada.find{Carta carta ->
+				carta.valor == maiorCartaTodas.valor
+			}
+		}
+
+		return existeEmpate ? null : vencedor
 	}
 
 	List<Carta> getSequencia(List<Carta> cartasOrdenadasValorUnico){
