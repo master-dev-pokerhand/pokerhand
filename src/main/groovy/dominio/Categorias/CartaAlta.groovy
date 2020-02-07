@@ -2,8 +2,11 @@ package dominio.Categorias
 
 import dominio.Carta
 import dominio.Jogador
+import enuns.Categorias
 
 class CartaAlta extends Categoria {
+
+	Categorias categoria_enum = Categorias.CARTA_ALTA
 
 	@Override
 	Boolean ehCategoria(List<Carta> cartas) {

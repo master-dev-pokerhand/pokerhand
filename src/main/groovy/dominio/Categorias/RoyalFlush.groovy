@@ -2,8 +2,11 @@ package dominio.Categorias
 
 import dominio.Carta
 import dominio.Jogador
+import enuns.Categorias
 
 class RoyalFlush extends StraightFlush {
+
+    Categorias categoria_enum = Categorias.ROYAL_FLUSH
 
     @Override
     Boolean ehCategoria(List<Carta> cartas) {

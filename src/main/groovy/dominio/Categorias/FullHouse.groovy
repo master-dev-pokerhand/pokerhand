@@ -2,9 +2,13 @@ package dominio.Categorias
 
 import dominio.Carta
 import dominio.Jogador
+import enuns.Categorias
 import enuns.Nipe
 
 class FullHouse extends Categoria {
+
+    Categorias categoria_enum = Categorias.FULL_HOUSE
+
     @Override
     Boolean ehCategoria(List<Carta> cartas) {
         Map<Nipe, List<Carta>> mapaCartas = obtemCartasComMesmoValor(cartas)

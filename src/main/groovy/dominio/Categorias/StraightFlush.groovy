@@ -2,9 +2,13 @@ package dominio.Categorias
 
 import dominio.Carta
 import dominio.Jogador
+import enuns.Categorias
 import enuns.Valor
 
 class StraightFlush extends Sequencia {
+
+    Categorias categoria_enum = Categorias.STRAIGHT_FLUSH
+
     @Override
     Boolean ehCategoria(List<Carta> cartas) {
         Map<Valor, List<Carta>> mapaNipe = obtemCartasComMesmoNipe(cartas)
